@@ -26,19 +26,16 @@ export default class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
     try {
-      let id = null;
-      id = axios.post('http://localhost/v1/user/login', {
+      axios.post('http://localhost/v1/user/login', {
         email: this.state.email,
         password: this.state.password,
       })
       .then((response) => {
-        alert("Logged in");
         this.props.childProps.userHasAuthenticated(true, response.data.user.ID);
       })
       .catch(function (error) {
         console.log(error);
       });
-      console.log("2 " + id);
       
     } catch (e) {
       alert(e.message);
@@ -49,7 +46,7 @@ export default class Login extends Component {
     return (
       <div className="Login">
         <Form onSubmit={this.handleSubmit}>
-          <Form.Group controlId="email" bsSize="large">
+          <Form.Group controlId="email" bssize="large">
             <Form.Control
               autoFocus
               type="email"
@@ -57,7 +54,7 @@ export default class Login extends Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Form.Group controlId="password" bsSize="large">
+          <Form.Group controlId="password" bssize="large">
             <Form.Control
               value={this.state.password}
               onChange={this.handleChange}
@@ -66,7 +63,7 @@ export default class Login extends Component {
           </Form.Group>
           <Button
             block
-            bsSize="large"
+            bssize="large"
             disabled={!this.validateForm()}
             type="submit"
           >

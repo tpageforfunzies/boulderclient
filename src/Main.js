@@ -43,7 +43,7 @@ class Main extends Component {
             <h1>Boulder Client</h1>
             <ul className="header">
             <li><NavLink to="/logout">Logout</NavLink></li>
-              <li><NavLink to="/routes">Routes</NavLink></li>
+              <li><NavLink to="/routes">My Routes</NavLink></li>
               <li><NavLink exact to="/route/add">Add A Route</NavLink></li>
             </ul>
             <div className="content bluebg">
