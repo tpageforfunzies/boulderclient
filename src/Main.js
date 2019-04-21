@@ -20,6 +20,14 @@ class Main extends Component {
       isAuthenticated: false,
       userId: null
     };
+
+    if (localStorage.getItem('boulderUserId') != null) {
+      this.state = {
+        isAuthenticated: true,
+        userId: parseInt(localStorage.getItem('boulderUserId'))
+      };
+    }
+
   }
 
   userHasAuthenticated = (authenticated, userId) => {

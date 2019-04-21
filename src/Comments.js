@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import DeleteComment from './DeleteComment.js'
 
 class Comments extends Component {
 	constructor(props) {
@@ -46,8 +47,10 @@ class Comments extends Component {
 	              <tr key={comment.ID}>
 	                <td>comment ID: {comment.ID}</td>
 	                <td>user ID: {comment.user_id}</td>
+	                <td>route ID: {comment.route_id}</td>
 	                <td>message: {comment.content}</td>
 	                <td>create date: {comment.CreatedAt}</td>
+	                <DeleteComment commentId={comment.ID} />
 	              </tr>
 	            ))}
               </tbody>

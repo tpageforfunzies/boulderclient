@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import AverageAll from "./AverageAll.js"
+import AverageAll from './AverageAll.js'
+import DeleteRoute from './DeleteRoute.js'
 
 class Routes extends Component {
 	constructor(props) {
@@ -52,6 +53,7 @@ class Routes extends Component {
 	                <td>name: {route.name}</td>
 	                <td>grade: {route.grade}</td>
 	                <td>create date: {route.CreatedAt}</td>
+	                <DeleteRoute routeId={route.ID} />
 	              </tr>
 	            ))}
               </tbody>

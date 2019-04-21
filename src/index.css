@@ -39,3 +39,8 @@ ul.header li a {
 .bluebg {
   background-color: #99CCFF;
 }
+.deleteBtn {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+}

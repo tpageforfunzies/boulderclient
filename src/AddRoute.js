@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-class Routes extends Component {
+class AddRoute extends Component {
 	constructor(props) {
 	    super(props);
 	    this.state = {
 	      error: null,
 	      isLoaded: false,
-	      routes: [],
 	      userId: this.props.userId,
-	      apiError: 'no error yet',
 	      redirect: false
 	    };
 	    this.addRoute = this.addRoute.bind(this);
@@ -36,7 +34,7 @@ class Routes extends Component {
 	}
 
 	render() {
-		const { routes, apiError, redirect } = this.state;
+		const { redirect } = this.state;
 		if (redirect === true) {
 			return (
 				<Redirect to="/routes" />
@@ -59,4 +57,4 @@ class Routes extends Component {
 	
 }
 
-export default Routes
+export default AddRoute
