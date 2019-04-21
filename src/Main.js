@@ -8,6 +8,7 @@ import Routes from "./Routes";
 import AddRoute from "./AddRoute";
 import Login from "./Login.js";
 import Logout from "./Logout.js";
+import Comments from "./Comments.js";
 
 
  
@@ -45,6 +46,7 @@ class Main extends Component {
             <li><NavLink to="/logout">Logout</NavLink></li>
               <li><NavLink to="/routes">My Routes</NavLink></li>
               <li><NavLink exact to="/route/add">Add A Route</NavLink></li>
+              <li><NavLink to="/comments">My Comments</NavLink></li>
             </ul>
             <div className="content bluebg">
               <Route
@@ -58,6 +60,10 @@ class Main extends Component {
               <Route 
                 path="/routes"
                 component={() => <Routes userId={userId} />}
+              />
+              <Route 
+                path="/comments"
+                component={() => <Comments userId={userId} />}
               />
             </div>
           </div>

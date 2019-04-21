@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 class Routes extends Component {
 	constructor(props) {
@@ -8,7 +9,8 @@ class Routes extends Component {
 	      isLoaded: false,
 	      routes: [],
 	      userId: this.props.userId,
-	      apiError: 'no error yet'
+	      apiError: 'no error yet',
+	      redirect: false
 	    };
 	    this.addRoute = this.addRoute.bind(this);
 	  }
@@ -22,8 +24,11 @@ class Routes extends Component {
 			grade: data.get('routeGrade'),
 			user_id: this.state.userId
 		})
-		.then(function (response) {
+		.then((response) => {
 			console.log(response);
+			this.setState({
+                redirect: true
+            })
 		})
 		.catch(function (error) {
 			console.log(error);
@@ -31,9 +36,13 @@ class Routes extends Component {
 	}
 
 	render() {
-		const { routes, apiError } = this.state;
-		console.log(routes)
-		console.log(apiError)
+		const { routes, apiError, redirect } = this.state;
+		if (redirect === true) {
+			return (
+				<Redirect to="/routes" />
+			)
+            
+        }
 		return (
 		  <div className="todoListMain">
 		    <div className="header">

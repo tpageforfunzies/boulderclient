@@ -1,29 +1,26 @@
 import React, { Component } from 'react'
-import AverageAll from "./AverageAll.js"
 
-class Routes extends Component {
+class Comments extends Component {
 	constructor(props) {
 	    super(props);
 	    this.state = {
 	      error: null,
 	      isLoaded: false,
-	      routes: [],
+	      comments: [],
 	      userId: this.props.userId,
 	      apiError: 'no error yet',
-	      averageGrade: 0,
-	      count: 0,
 	    };
 	  }
 
 	componentDidMount() {
-		let url = "http://localhost/v1/user/" + this.state.userId + "/routes";
+		let url = "http://localhost/v1/user/" + this.state.userId + "/comments";
 	    fetch(url)
 	      .then(res => res.json())
 	      .then(
 	        (result) => {
 	          this.setState({
 	            isLoaded: true,
-	            routes: result.routes,
+	            comments: result.comments,
 	          });
 	        },
 	        // Note: it's important to handle errors here
@@ -39,28 +36,26 @@ class Routes extends Component {
 	  }
 
 	render() {
-		let routes = this.state.routes;
+		let comments = this.state.comments;
 		let userId = this.state.userId;
 		return (
 		  <div className="todoListMain bluebg">
 		    <table className="table table-dark table-striped">
 		      <tbody >
-	            {routes.map(route => (
-	              <tr key={route.ID}>
-	                <td>route ID: {route.ID}</td>
-	                <td>user ID: {route.user_id}</td>
-	                <td>name: {route.name}</td>
-	                <td>grade: {route.grade}</td>
-	                <td>create date: {route.CreatedAt}</td>
+	            {comments.map(comment => (
+	              <tr key={comment.ID}>
+	                <td>comment ID: {comment.ID}</td>
+	                <td>user ID: {comment.user_id}</td>
+	                <td>message: {comment.content}</td>
+	                <td>create date: {comment.CreatedAt}</td>
 	              </tr>
 	            ))}
               </tbody>
             </table>
-            <AverageAll userId={userId} />
 		  </div>
 		)
 	}
 	
 }
 
-export default Routes
+export default Comments
